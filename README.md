@@ -22,7 +22,7 @@ list.array[0] = "hello";
 array_resize(list.array, 2);
 ```
 
-Weak parts are: no outside of bounds checking and possibility of losing the reference if reassign it explicitly via `list.array = []`, which you shouldn't do.
+Weak parts are: slower than pure array or ds_list, no outside of bounds checking and possibility of losing the reference if reassign it explicitly via `list.array = []`, which you shouldn't do.
 
 ## Installation:
 Get the latest asset package from the [releases page](../../releases). Import it into IDE.   
