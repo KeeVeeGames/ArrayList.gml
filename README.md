@@ -32,7 +32,7 @@ Alternatively copy the code from corresponding scripts into your project.
 ArrayList is using [quicksort](https://github.com/KeeVeeGames/quicksort.gml) package so you need to import this also if you do install as asset package and not from sources.
 
 ## Syntax:
-### API Reference
+### [API Reference](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference)
 - [ArrayList Class](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#arraylist-class)
   * [Constructor](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#constructor)
   * [Members:](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#members)
