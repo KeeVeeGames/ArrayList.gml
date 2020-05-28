@@ -4,7 +4,7 @@ It is a custom List class / struct build on top of a standard GameMaker array. W
 
 The advantages over ds_list or other struct realizations are: garbage collected, [fast sort function](https://github.com/KeeVeeGames/quicksort.gml), `[]` accessor and referencing as an array.
 
-ArrayList is GC-friendly as it's basically an array inside of a struct so need to manually destroy it as you do with the ds_list (although you can use `delete` on a ArrayList to dispose it explicitly).
+ArrayList is GC-friendly as it's basically an array inside of a struct so no need to manually destroy it as you do with the ds_list (although you can use `delete` on a ArrayList to dispose it explicitly).
 
 There are some methods, including analogues of corresponding ds_list functions such as: [`add`](../../wiki/API-Reference#addvalue), [`remove`](../../wiki/API-Reference#removepos), [`insert`](../../wiki/API-Reference#insertpos-value), [`sort`](../../wiki/API-Reference#sortascending), [`shuffle`](../../wiki/API-Reference#shuffle), [`reverse`](../../wiki/API-Reference#reverse), [`copy`](../../wiki/API-Reference#copysource) and other.
 
@@ -28,7 +28,7 @@ Weak parts are: no outside of bounds checking and possibility of losing the refe
 Get the latest asset package from the [releases page](../../releases). Import it into IDE.   
 Alternatively copy the code from corresponding scripts into your project.
 
-## Dependncies:
+## Dependencies:
 ArrayList is using [quicksort](https://github.com/KeeVeeGames/quicksort.gml) package so you need to import this also if you do install as asset package and not from sources.
 
 ## Syntax:
