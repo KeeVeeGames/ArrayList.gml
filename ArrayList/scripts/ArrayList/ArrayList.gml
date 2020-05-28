@@ -70,7 +70,7 @@ function ArrayList() constructor {
 	}
 	
 	/// @function						clear()
-	/// @description					Clear all data from the ArrayList making array size to 0
+	/// @description					Clears all data from the ArrayList making array size to 0
 	static clear = function() {
 		array_resize(array, 0);
 	}
@@ -84,13 +84,13 @@ function ArrayList() constructor {
 	
 	/// @function						sort(ascending)
 	/// @param {bool} ascending			Whether the values should be ascending (true) or descending (false) order
-	/// @description					Modifies the ArrayList sorting it with the quicksort algorithm (strings sorted alphabetically)
+	/// @description					Modifies the ArrayList, sorting it with the quicksort algorithm (strings sorted alphabetically)
 	static sort = function(ascending) {
 		array_sort(array, ascending);
 	}
 	
 	/// @function						shuffle()
-	/// @description					Reorder all the values into random positions
+	/// @description					Reorders all the values into random positions
 	static shuffle = function() {
 		var length = array_length(array);
 		
@@ -99,6 +99,20 @@ function ArrayList() constructor {
 			var temp = array[i];
 			array[i] = array[j];
 			array[j] = temp;
+		}
+	}
+	
+	/// @function						reverse()
+	/// @description					Reverses the order of the elements in the ArrayList
+	static reverse = function() {
+		var length = array_length(array);
+		var hlength = length div 2;
+		
+		for (var left = 0; left < hlength; left++) {
+			var right = length - 1 - left;
+			var temp = array[left];
+			array[left] = array[right];
+			array[right] = temp;
 		}
 	}
 	
