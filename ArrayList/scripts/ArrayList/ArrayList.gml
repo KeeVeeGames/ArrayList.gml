@@ -131,7 +131,7 @@ function ArrayList() constructor {
 	/// @description					Returns a shallow copy of this ArrayList
 	static clone = function() {
 		var length = array_length(array);
-		var list_clone = new gw_ArrayList();
+		var list_clone = new ArrayList();
 		
 		array_copy(list_clone.array, 0, array, 0, length);
 		
