@@ -1,7 +1,7 @@
 /// @function						array_sort(array, ascending)
 /// @param {*[]} array				Array to sort
 /// @param {bool} ascending			Whether the values should be ascending (true) or descending (false) order
-/// @description					Modifies the original array sorting it with the quicksort algorithm
+/// @description					Modifies the original array, sorting it with the quicksort algorithm
 function array_sort(_array, ascending) {
 	var array = _array;
 	var compare;
