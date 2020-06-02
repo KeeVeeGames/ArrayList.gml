@@ -24,6 +24,12 @@ array_resize(list.array, 2);
 
 Weak parts are: slower than pure array or ds_list, no outside of bounds checking and possibility of losing the reference if reassign it explicitly via `list.array = []`, which you shouldn't do.
 
+## Serialization:
+You can easily encode/decode ArrayList to Json and vice versa with this packages:
+* [TJSON](https://yellowafterlife.itch.io/gamemaker-tjson)
+* [SNAP](https://github.com/JujuAdams/SNAP)
+* etc.
+
 ## Installation:
 Get the latest asset package from the [releases page](../../releases). Import it into IDE.   
 Alternatively copy the code from corresponding scripts into your project.
