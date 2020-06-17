@@ -81,6 +81,6 @@ show_debug_message(list2.array);
 ```
 
 ## Author:
-Nikita Musatov - [MusNik / KeeVee Games](https://keevee.games/)
+Nikita Musatov - [MusNik / KeeVee Games](https://twitter.com/keeveegames)
 
 License: [MIT](https://en.wikipedia.org/wiki/MIT_License)
