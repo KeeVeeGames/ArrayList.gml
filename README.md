@@ -27,7 +27,7 @@ Weak parts are: slower than pure array or ds_list, no outside of bounds checking
 ## JSON Serialization:
 You can easily encode/decode ArrayList to Json and vice versa with this packages:
 * [TJSON](https://yellowafterlife.itch.io/gamemaker-tjson)
-* [SNAP](https://github.com/JujuAdams/SNAP)
+* [SNAP](https://github.com/JujuAdams/SNAP) (+ XML)
 * etc.
 
 ## Installation:
