@@ -89,16 +89,23 @@ function ArrayList() constructor {
 		array_sort(array, ascending);
 	}
 	
+	/// @function						swap(pos1, pos2)
+	/// @param {real} pos1				Position of value to swap with the value of pos2
+	/// @param {real} pos2				Position of value to swap with the value of pos1
+	/// @description					Swaps the values in pos1 and pos2
+	static swap = function(pos1, pos2) {
+		var temp = array[pos1];
+		array[pos1] = array[pos2];
+		array[pos2] = temp;
+	}
+	
 	/// @function						shuffle()
 	/// @description					Reorders all the values into random positions
 	static shuffle = function() {
 		var length = array_length(array);
 		
 		for (var i = length - 1; i > 0; i--) {
-			var j = irandom(i);
-			var temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
+			swap(i, irandom(i));
 		}
 	}
 	
@@ -110,9 +117,7 @@ function ArrayList() constructor {
 		
 		for (var left = 0; left < hlength; left++) {
 			var right = length - 1 - left;
-			var temp = array[left];
-			array[left] = array[right];
-			array[right] = temp;
+			swap(left, right);
 		}
 	}
 	
