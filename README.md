@@ -52,6 +52,7 @@ ArrayList is using [quicksort](https://github.com/KeeVeeGames/quicksort.gml) pac
     + [`clear()`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#clear)
     + [`is_empty()` 🠆 `bool`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#is_empty--bool)
     + [`sort(ascending)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#sortascending)
+    + [`swap(pos1, pos2)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#swappos1-pos2)
     + [`shuffle()`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#shuffle)
     + [`reverse()`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#reverse)
     + [`copy(source)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#copysource)
