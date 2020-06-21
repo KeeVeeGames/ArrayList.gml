@@ -56,7 +56,7 @@ ArrayList is using [quicksort](https://github.com/KeeVeeGames/quicksort.gml) pac
     + [`reverse()`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#reverse)
     + [`copy(source)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#copysource)
     + [`clone()` 🠆 `ArrayList`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#clone--arraylist)
-### Example
+### Example:
 ```js
 var list1 = new ArrayList([2, 4, 43, 50, 79, 36, 93, 54, 99, 26, 65, 69, 81, 63, 72, 3]);
 
@@ -80,7 +80,10 @@ show_debug_message(list1.array);
 show_debug_message(list2.array);
 ```
 
-## Author:
+## Authors:
 Nikita Musatov - [MusNik / KeeVee Games](https://twitter.com/keeveegames)
 
-License: [MIT](https://en.wikipedia.org/wiki/MIT_License)
+**Contributors**:
+* [Sohom Sahaun](https://twitter.com/sohomsahaun)
+
+**License**: [MIT](https://en.wikipedia.org/wiki/MIT_License)
