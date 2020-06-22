@@ -42,7 +42,7 @@ ArrayList is using [quicksort](https://github.com/KeeVeeGames/quicksort.gml) pac
 - [ArrayList Class](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#arraylist-class)
   * [Constructor](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#constructor)
   * [Members:](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#members)
-    + [`array` : `*[]`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#-array--)
+    + [`array` : `*[]`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#array--)
   * [Methods:](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#methods)
     + [`add(...value)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#addvalue)
     + [`remove(pos)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#removepos)
