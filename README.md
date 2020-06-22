@@ -47,16 +47,16 @@ ArrayList is using [quicksort](https://github.com/KeeVeeGames/quicksort.gml) pac
     + [`add(...value)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#addvalue)
     + [`remove(pos)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#removepos)
     + [`insert(pos, value)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#insertpos-value)
-    + [`size()` 🠆 `real`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#size--real)
-    + [`find_index(value)` 🠆 `real`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#find_indexvalue--real)
+    + [`size()` ➞ `real`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#size--real)
+    + [`find_index(value)` ➞ `real`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#find_indexvalue--real)
     + [`clear()`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#clear)
-    + [`is_empty()` 🠆 `bool`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#is_empty--bool)
+    + [`is_empty()` ➞ `bool`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#is_empty--bool)
     + [`sort(ascending)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#sortascending)
     + [`swap(pos1, pos2)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#swappos1-pos2)
     + [`shuffle()`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#shuffle)
     + [`reverse()`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#reverse)
     + [`copy(source)`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#copysource)
-    + [`clone()` 🠆 `ArrayList`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#clone--arraylist)
+    + [`clone()` ➞ `ArrayList`](https://github.com/KeeVeeGames/ArrayList.gml/wiki/API-Reference#clone--arraylist)
 ### Example:
 ```js
 var list1 = new ArrayList([2, 4, 43, 50, 79, 36, 93, 54, 99, 26, 65, 69, 81, 63, 72, 3]);
