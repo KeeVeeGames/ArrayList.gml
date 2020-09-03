@@ -1,5 +1,7 @@
 # ArrayList.gml
 
+[![Donate](https://img.shields.io/badge/Donate-%E2%9D%A4-blue.svg)](https://musnik.itch.io/donate-me)
+
 It is a custom List class / struct build on top of a standard GameMaker array. Works only with the 2.3+ version which introduced structs and constructors.
 
 The advantages over ds_list or other struct realizations are: garbage collected, [fast sort function](https://github.com/KeeVeeGames/quicksort.gml), `[]` accessor and referencing as an array.
