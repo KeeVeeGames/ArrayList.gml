@@ -1,6 +1,6 @@
 # ArrayList.gml
 
-[![Donate](https://img.shields.io/badge/donate-%E2%9D%A4-blue.svg)](https://musnik.itch.io/donate-me) [![License](https://img.shields.io/github/license/KeeVeeGames/ArrayList.gml)](#)
+[![Donate](https://img.shields.io/badge/donate-%E2%9D%A4-blue.svg)](https://musnik.itch.io/donate-me) [![License](https://img.shields.io/github/license/KeeVeeGames/ArrayList.gml)](#!)
 
 It is a custom List class / struct build on top of a standard GameMaker array. Works only with the 2.3+ version which introduced structs and constructors.
 
