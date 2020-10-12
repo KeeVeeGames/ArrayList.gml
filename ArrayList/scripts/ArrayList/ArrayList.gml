@@ -12,38 +12,28 @@ function ArrayList() constructor {
     /// @function                       add(...value)
     /// @param {*} ...value             Value(s) to add to the ArrayList
     /// @description                    Adds a new value to the ArrayList, will be added at the end
-    static add = function() {
-        var length = array_length(array);
-        
+    static add = function() {        
         for (var i = 0; i < argument_count; i++) {
-            array[length] = argument[i];
-            length++;
+            array_push(array, argument[i]);
         }
     }
     
-    /// @function                       remove(pos)
-    /// @param {real} pos               Position of value to delete
-    /// @description                    Removes the value at a specific position within the ArrayList
-    static remove = function(pos) {
-        var length = array_length(array);
-        var size = length - pos - 1;
-        
-        var temp = array_create(size);
-        
-        array_copy(temp, 0, array, pos + 1, size);
-        array_resize(array, length - 1);
-        array_copy(array, pos, temp, 0, size);
+    /// @function                       remove(pos, number)
+    /// @param {real} pos               Position of value(s) to delete
+    /// @param {real} number            Number of value(s) to delete
+    /// @description                    Removes the value(s) at a specific position within the ArrayList
+    static remove = function(pos, number) {
+        array_delete(array, pos, number);
     }
     
-    /// @function                       insert(pos, value)
-    /// @param {real} pos               Position to add the value from 0 to size-1
-    /// @param {*} value                Value to add to the list
-    /// @description                    Adds the given value into the list at the given position, values after will be shifted
+    /// @function                       insert(pos, ...value)
+    /// @param {real} pos               Position to add the value(s) from 0 to size-1
+    /// @param {*} ...value             Value(s) to add to the list
+    /// @description                    Adds the given value(s) into the list at the given position, values after will be shifted
     static insert = function(pos, value) {
-        var length = array_length(array);
-        
-        array_copy(array, pos + 1, array, pos, length - pos);
-        array[pos] = value;
+        for (var i = 0; i < argument_count; i++) {
+            array_insert(array, argument[i]);
+        }
     }
     
     /// @function                       size()
@@ -82,11 +72,11 @@ function ArrayList() constructor {
         return (array_length(array) == 0);
     }
     
-    /// @function                       sort(ascending)
-    /// @param {bool} ascending         Whether the values should be ascending (true) or descending (false) order
-    /// @description                    Modifies the ArrayList, sorting it with the quicksort algorithm (strings sorted alphabetically)
-    static sort = function(ascending) {
-        array_sort(array, ascending);
+    /// @function                                           sort(ascending_or_comparator)
+    /// @param {bool|function} ascending_or_comparator      Whether the values should be ascending (true) or descending (false) order or custom comparator function (see array_sort in manual for more info)
+    /// @description                                        Modifies the ArrayList, sorting it ascending or descending order or using a custom function
+    static sort = function(ascending_or_comparator) {
+        array_sort(array, ascending_or_comparator);
     }
     
     /// @function                       swap(pos1, pos2)
@@ -123,7 +113,7 @@ function ArrayList() constructor {
     
     /// @function                       copy(source)
     /// @param {ArrayList} source       ArrayList to be copied from
-    /// @description                    Copies the contents of one ArrayList into another
+    /// @description                    Shallow copy the content of one ArrayList into another
     static copy = function(source) {
         var length = array_length(source.array);
         
