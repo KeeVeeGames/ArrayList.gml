@@ -7,11 +7,9 @@ list1.remove(list1.size() - 2);
 list1.insert(2, 5);
 
 list1.array[2] = 6;
-list1.array[list1.find_index(81)] = 18;
+list1.array[list1.index_of(81)] = 18;
 
-var list2 = new ArrayList();
-
-list2.copy(list1);
+var list2 = list1.clone();
 
 list1.sort(true);
 list2.shuffle();
