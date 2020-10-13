@@ -354,4 +354,8 @@ function ArrayList() constructor {
     static equals = function(array_list) {
         return array_equals(array, array_list.array);
     }
+    
+    static toString = function() {
+        return "ArrayList: " + string(array);
+    }
 }

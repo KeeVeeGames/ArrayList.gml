@@ -14,5 +14,5 @@ var list2 = list1.clone();
 list1.sort(true);
 list2.shuffle();
 
-show_debug_message(list1.array);
-show_debug_message(list2.array);
+show_debug_message(list1);
+show_debug_message(list2);
