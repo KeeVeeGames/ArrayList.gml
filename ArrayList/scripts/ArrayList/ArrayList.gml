@@ -49,7 +49,7 @@ function ArrayList() constructor {
             array_push(array, source.array[i]);
         }
         
-        return self;                    // For method chaining                    
+        return self;                                // For method chaining                    
     }
     
     /// @function                                   add_from_range(source_arraylist, source_pos, number)
@@ -62,7 +62,7 @@ function ArrayList() constructor {
             array_push(array, source.array[i]);
         }
         
-        return self;                    // For method chaining
+        return self;                                // For method chaining
     }
     
     /// @function                               add_array(source_array)
@@ -75,7 +75,7 @@ function ArrayList() constructor {
             array_push(array, source[i]);
         }
         
-        return self;                    // For method chaining
+        return self;                            // For method chaining
     }
     
     /// @function                               add_array_range(source_array, source_pos, number)
@@ -89,7 +89,7 @@ function ArrayList() constructor {
             array_push(array, source[i]);
         }
         
-        return self;                    // For method chaining
+        return self;                            // For method chaining
     }
     
     /// @function                       remove_at(pos)
@@ -134,7 +134,7 @@ function ArrayList() constructor {
             array_insert(array, pos, source.array[i]);
         }
         
-        return self;                    // For method chaining
+        return self;                                // For method chaining
     }
     
     /// @function                                   insert_from_range(source_arraylist, source_pos, number, pos)
@@ -148,7 +148,7 @@ function ArrayList() constructor {
             array_insert(array, pos, source.array[i]);
         }
         
-        return self;                    // For method chaining
+        return self;                                // For method chaining
     }
     
     /// @function                           insert_array(source_array, pos)
@@ -162,7 +162,7 @@ function ArrayList() constructor {
             array_insert(array, pos, source[i]);
         }
         
-        return self;                    // For method chaining
+        return self;                        // For method chaining
     }
     
     /// @function                           insert_array_range(source_array, source_pos, number, pos)
@@ -176,7 +176,7 @@ function ArrayList() constructor {
             array_insert(array, pos, source[i]);
         }
         
-        return self;                    // For method chaining
+        return self;                        // For method chaining
     }
     
     /// @function                       index_of(value)
