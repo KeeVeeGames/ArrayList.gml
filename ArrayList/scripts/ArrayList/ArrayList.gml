@@ -455,14 +455,6 @@ function ArrayList() constructor {
         
         return self;                    // For method chaining
     }
-
-    static write = function() {
-        
-    }
-    
-    static read = function(str) {
-        
-    }
     
     /// @function                       iterator()
     /// @return {Iterator}              See {@link https://github.com/KeeVeeGames/Iterator.gml}
@@ -645,6 +637,34 @@ function ArrayList() constructor {
         array_copy(array_clone, 0, array, pos, number);
         
         return array_clone;
+    }    
+    /// @function                       to_ds_list()
+    /// @return {ds_list}
+    /// @description                    Creates a new ds_list containing all values from the ArrayList
+    static to_array = function() {
+        var length = array_length(array);
+        var list_clone = ds_list_create();
+        
+        for (var i = 0; i < length; i++) {
+            ds_list_add(list_clone, array[i]);
+        }
+        
+        return list_clone;
+    }
+    
+    /// @function                       to_ds_list_range(pos, number)
+    /// @param {real} pos               Position of value(s) to copy
+    /// @param {real} number            Number of value(s) to copy
+    /// @return {*[]}
+    /// @description                    Creates a new ds_list containing some values from the ArrayList
+    static to_ds_list_range = function(pos, number) {
+        var list_clone = ds_list_create();
+        
+        for (var i = pos; i < pos + number; i++) {
+            ds_list_add(list_clone, array[i]);
+        }
+        
+        return list_clone;
     }
     
     /// @function                           equals(array_list)

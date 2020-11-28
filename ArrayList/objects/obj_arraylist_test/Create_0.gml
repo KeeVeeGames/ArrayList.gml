@@ -1,4 +1,10 @@
-var time1, time2, list1, list2, val;
+var list = ds_list_create();
+
+ds_list_read(list, "2F0100000100000006000000");
+
+show_debug_message(list[| 0]);
+
+/*var time1, time2, list1, list2, val;
 
 time1 = get_timer();
 repeat(1000) list1 = new ArrayList();
