@@ -2,138 +2,12 @@
 /// @param {*[]} [array]            Array to make the ArrayList from
 /// @description                    List struct build on top of an array
 function ArrayList() constructor {
+    /// @hint :array
     /// @member {*[]} array             Can be used with an accessor or as a reference, points to the same array for full lifecycle
     if (argument_count == 1) {
         array = argument[0];
     } else {
         array = [];
-    }
-    
-    /// @function                       add(...value)
-    /// @param {*} ...value             Value(s) to add to the ArrayList
-    /// @description                    Adds a new value to the ArrayList, will be added at the end
-    static add = function() {        
-        for (var i = 0; i < argument_count; i++) {
-            array_push(array, argument[i]);
-        }
-    }
-    
-    /// @function                       add_from(source)
-    /// @param {ArrayList} source       ArrayList to be added from
-    /// @description                    Adds the value(s) from another ArrayList at the end
-    static add_from = function(source) {
-        var length = array_length(source.array);
-        
-        for (var i = 0; i < length; i++) {
-            array_push(array, source.array[i]);
-        }
-    }
-    
-    /// @function                       add_from_part(source, source_pos, number)
-    /// @param {ArrayList} source       ArrayList to be inserted from
-    /// @param {real} source_pos        Position within the ArrayList to start adding from
-    /// @param {real} number            Number of values to add
-    /// @description                    Adds the part of another ArrayList at the end
-    static add_from_part = function(source, source_pos, number) {        
-        for (var i = source_pos; i < source_pos + number; i++) {
-            array_push(array, source.array[i]);
-        }
-    }
-    
-    /// @function                       add_array(source)
-    /// @param {ArrayList} source       Array to be added from
-    /// @description                    Adds the value(s) from array into the ArrayList at the end
-    static add_array = function(source, pos) {
-        var length = array_length(source);
-        
-        for (var i = 0; i < length; i++) {
-            array_push(array, source[i]);
-        }
-    }
-    
-    /// @function                       add_array_part(source, source_pos, number)
-    /// @param {ArrayList} source       Array to be added from
-    /// @param {real} source_pos        Position within the array to start adding from
-    /// @param {real} number            Number of values to insert
-    /// @param {real} pos               Position to add the value(s) from 0 to size-1
-    /// @description                    Adds the part of array into the ArrayList at the end
-    static add_array_part = function(source, source_pos, number) {     
-        for (var i = source_pos; i < source_pos + number; i++) {
-            array_push(array, source[i]);
-        }
-    }
-    
-    /// @function                       remove(pos)
-    /// @param {real} pos               Position of value to delete
-    /// @description                    Removes the value at a specific position within the ArrayList
-    static remove = function(pos) {
-        array_delete(array, pos, 1);
-    }
-    
-    /// @function                       remove_part(pos, number)
-    /// @param {real} pos               Position of value(s) to delete
-    /// @param {real} number            Number of value(s) to delete
-    /// @description                    Removes the value(s) at a specific position within the ArrayList
-    static remove_part = function(pos, number) {
-        array_delete(array, pos, number);
-    }
-    
-    /// @function                       insert(pos, ...value)
-    /// @param {real} pos               Position to add the value(s) from 0 to size-1
-    /// @param {*} ...value             Value(s) to add to the ArrayList
-    /// @description                    Adds the given value(s) into the ArrayList at the given position, values after will be shifted
-    static insert = function(pos, value) {
-        for (var i = 0; i < argument_count; i++) {
-            array_insert(array, pos, argument[i]);
-        }
-    }
-    
-    /// @function                       insert_from(source, pos)
-    /// @param {ArrayList} source       ArrayList to be inserted from
-    /// @param {real} pos               Position to add the value(s) from 0 to size-1
-    /// @description                    Adds the value(s) from another ArrayList at the given position, values after will be shifted
-    static insert_from = function(source, pos) {
-        var length = array_length(source.array);
-        
-        for (var i = 0; i < length; i++) {
-            array_insert(array, pos, source.array[i]);
-        }
-    }
-    
-    /// @function                       insert_from_part(source, source_pos, number, pos)
-    /// @param {ArrayList} source       ArrayList to be inserted from
-    /// @param {real} source_pos        Position within the ArrayList to start inserting from
-    /// @param {real} number            Number of values to insert
-    /// @param {real} pos               Position to add the value(s) from 0 to size-1
-    /// @description                    Adds the part of another ArrayList at the given position, values after will be shifted
-    static insert_from_part = function(source, source_pos, number, pos) {        
-        for (var i = source_pos; i < source_pos + number; i++) {
-            array_insert(array, pos, source.array[i]);
-        }
-    }
-    
-    /// @function                       insert_array(source, pos)
-    /// @param {ArrayList} source       Array to be inserted from
-    /// @param {real} pos               Position to add the value(s) from 0 to size-1
-    /// @description                    Adds the value(s) from array into the ArrayList at the given position, values after will be shifted
-    static insert_array = function(source, pos) {
-        var length = array_length(source);
-        
-        for (var i = 0; i < length; i++) {
-            array_insert(array, pos, source[i]);
-        }
-    }
-    
-    /// @function                       insert_array_part(source, source_pos, number, pos)
-    /// @param {ArrayList} source       Array to be inserted from
-    /// @param {real} source_pos        Position within the array to start inserting from
-    /// @param {real} number            Number of values to insert
-    /// @param {real} pos               Position to add the value(s) from 0 to size-1
-    /// @description                    Adds the part of array into the ArrayList at the given position, values after will be shifted
-    static insert_array_part = function(source, source_pos, number, pos) {     
-        for (var i = source_pos; i < source_pos + number; i++) {
-            array_insert(array, pos, source[i]);
-        }
     }
     
     /// @function                       get(pos)
@@ -150,6 +24,133 @@ function ArrayList() constructor {
     /// @description                    Replaces the value at the specified position in the ArrayList with other value
     static set = function(pos, value) {
         array[pos] = value;
+    }
+    
+    /// @function                       add(...value)
+    /// @param {*} ...value             Value(s) to add to the ArrayList
+    /// @description                    Adds a new value to the ArrayList, will be added at the end
+    static add = function() {        
+        for (var i = 0; i < argument_count; i++) {
+            array_push(array, argument[i]);
+        }
+    }
+    
+    /// @function                       add_from(source_arraylist)
+    /// @param {ArrayList} source       ArrayList to be added from
+    /// @description                    Adds the value(s) from another ArrayList at the end
+    static add_from = function(source) {
+        var length = array_length(source.array);
+        
+        for (var i = 0; i < length; i++) {
+            array_push(array, source.array[i]);
+        }
+    }
+    
+    /// @function                       add_from_range(source_arraylist, source_pos, number)
+    /// @param {ArrayList} source       ArrayList to be inserted from
+    /// @param {real} source_pos        Position within the ArrayList to start adding from
+    /// @param {real} number            Number of values to add
+    /// @description                    Adds the range of another ArrayList at the end
+    static add_from_range = function(source, source_pos, number) {        
+        for (var i = source_pos; i < source_pos + number; i++) {
+            array_push(array, source.array[i]);
+        }
+    }
+    
+    /// @function                       add_array(source_array)
+    /// @param {ArrayList} source       Array to be added from
+    /// @description                    Adds the value(s) from array into the ArrayList at the end
+    static add_array = function(source, pos) {
+        var length = array_length(source);
+        
+        for (var i = 0; i < length; i++) {
+            array_push(array, source[i]);
+        }
+    }
+    
+    /// @function                       add_array_range(source_array, source_pos, number)
+    /// @param {ArrayList} source       Array to be added from
+    /// @param {real} source_pos        Position within the array to start adding from
+    /// @param {real} number            Number of values to insert
+    /// @param {real} pos               Position to add the value(s) from 0 to size-1
+    /// @description                    Adds the range of array into the ArrayList at the end
+    static add_array_range = function(source, source_pos, number) {     
+        for (var i = source_pos; i < source_pos + number; i++) {
+            array_push(array, source[i]);
+        }
+    }
+    
+    /// @function                       remove_at(pos)
+    /// @param {real} pos               Position of value to delete
+    /// @description                    Removes the value at a specific position within the ArrayList
+    static remove_at = function(pos) {
+        array_delete(array, pos, 1);
+    }
+    
+    /// @function                       remove_range(pos, number)
+    /// @param {real} pos               Position of value(s) to delete
+    /// @param {real} number            Number of value(s) to delete
+    /// @description                    Removes the value(s) at a specific position within the ArrayList
+    static remove_range = function(pos, number) {
+        array_delete(array, pos, number);
+    }
+    
+    /// @function                       insert(pos, ...value)
+    /// @param {real} pos               Position to add the value(s) from 0 to size-1
+    /// @param {*} ...value             Value(s) to add to the ArrayList
+    /// @description                    Adds the given value(s) into the ArrayList at the given position, values after will be shifted
+    static insert = function(pos, value) {
+        for (var i = 0; i < argument_count; i++) {
+            array_insert(array, pos, argument[i]);
+        }
+    }
+    
+    /// @function                       insert_from(source_arraylist, pos)
+    /// @param {ArrayList} source       ArrayList to be inserted from
+    /// @param {real} pos               Position to add the value(s) from 0 to size-1
+    /// @description                    Adds the value(s) from another ArrayList at the given position, values after will be shifted
+    static insert_from = function(source, pos) {
+        var length = array_length(source.array);
+        
+        for (var i = 0; i < length; i++) {
+            array_insert(array, pos, source.array[i]);
+        }
+    }
+    
+    /// @function                       insert_from_range(source_arraylist, source_pos, number, pos)
+    /// @param {ArrayList} source       ArrayList to be inserted from
+    /// @param {real} source_pos        Position within the ArrayList to start inserting from
+    /// @param {real} number            Number of values to insert
+    /// @param {real} pos               Position to add the value(s) from 0 to size-1
+    /// @description                    Adds the range of another ArrayList at the given position, values after will be shifted
+    static insert_from_range = function(source, source_pos, number, pos) {        
+        for (var i = source_pos; i < source_pos + number; i++) {
+            array_insert(array, pos, source.array[i]);
+        }
+    }
+    
+    /// @function                       insert_array(source_array, pos)
+    /// @param {ArrayList} source       Array to be inserted from
+    /// @param {real} pos               Position to add the value(s) from 0 to size-1
+    /// @description                    Adds the value(s) from array into the ArrayList at the given position, values after will be shifted
+    static insert_array = function(source, pos) {
+        var length = array_length(source);
+        
+        for (var i = 0; i < length; i++) {
+            array_insert(array, pos, source[i]);
+        }
+    }
+    
+    /// @function                       insert_array_range(source_array, source_pos, number, pos)
+    /// @param {ArrayList} source       Array to be inserted from
+    /// @param {real} source_pos        Position within the array to start inserting from
+    /// @param {real} number            Number of values to insert
+    /// @param {real} pos               Position to add the value(s) from 0 to size-1
+    /// @description                    Adds the range of array into the ArrayList at the given position, values after will be shifted
+    static insert_array_range = function(source, source_pos, number, pos) {     
+        for (var i = source_pos; i < source_pos + number; i++) {
+            array_insert(array, pos, source[i]);
+        }
     }
     
     /// @function                       index_of(value)
@@ -182,6 +183,198 @@ function ArrayList() constructor {
         }
         
         return -1;
+    }
+    
+    static contains = function(value) {
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            if (array[i] == value) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    static contains_from = function(source_arraylist) {
+        var length = array_length(array);
+        var source_array = source_arraylist.array;
+        var source_length = array_length(source_array);
+        
+        for (var i = 0; i < length; i++) {
+            for (var j = 0; j < source_length; j++) {
+                if (array[i] != source_array[j]) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    static contains_from_range = function(source_arraylist, source_pos, number) {
+        var length = array_length(array);
+        var source_array = source_arraylist.array;
+        
+        for (var i = 0; i < length; i++) {
+            for (var j = source_pos; j < source_pos + number; j++) {
+                if (array[i] != source_array[j]) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    static contains_array = function(source_array) {
+        var length = array_length(array);
+        var source_length = array_length(source_array);
+        
+        for (var i = 0; i < length; i++) {
+            for (var j = 0; j < source_length; j++) {
+                if (array[i] != source_array[j]) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    static contains_array_range = function(source_array, source_pos, number) {
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            for (var j = source_pos; j < source_pos + number; j++) {
+                if (array[i] != source_array[j]) {
+                    return false;
+                }
+            }
+        }
+        
+        return true;
+    }
+    
+    static find = function(predicate) {
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                return value;
+            }
+        }
+    }
+    
+    static find_last = function(predicate) {
+        var length = array_length(array);
+        
+        for (var i = length - 1; i >= 0; i--) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                return value;
+            }
+        }
+    }
+    
+    static find_all  = function(predicate) {
+        var result = new ArrayList();
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                result.add(value);
+            }
+        }
+        
+        return result;
+    }
+    
+    static find_index  = function(predicate) {
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                return i;
+            }
+        }
+    }
+    
+    static find_last_index = function(predicate) {
+        var length = array_length(array);
+        
+        for (var i = length - 1; i >= 0; i--) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                return i;
+            }
+        }
+    }
+    
+    static remove = function(predicate) {
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                array_delete(array, i, 1);
+                exit;
+            }
+        }
+    }
+    
+    static remove_last = function(predicate) {
+        var length = array_length(array);
+        
+        for (var i = length - 1; i >= 0; i--) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                array_delete(array, i, 1);
+                exit;
+            }
+        }
+    }
+    
+    static remove_all = function(predicate) {
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            var value = array[i];
+            
+            if (predicate(value)) {
+                array_delete(array, i, 1);
+            }
+        }
+    }
+    
+    /// @function                       foreach(func)
+    /// @param {function} func          Function to call on each element
+    /// @description                    Calls a function on each ArrayList element
+    static foreach = function(func) {
+        var length = array_length(array);
+        
+        for (var i = 0; i < length; i++) {
+            func(array);
+        }
+    }
+
+    static write = function() {
+        
+    }
+    
+    static read = function(str) {
+        
     }
     
     /// @function                       iterator()
@@ -257,7 +450,7 @@ function ArrayList() constructor {
         }
     }
     
-    /// @function                       copy(source)
+    /// @function                       copy(source_arraylist)
     /// @param {ArrayList} source       ArrayList to be copied from
     /// @description                    Copies (shallow) the content of one ArrayList into another (clears the destination ArrayList)
     static copy = function(source) {
@@ -267,17 +460,17 @@ function ArrayList() constructor {
         array_copy(array, 0, source.array, 0, length);
     }
     
-    /// @function                       copy_part(source, source_pos, number, pos)
+    /// @function                       copy_range(source_arraylist, source_pos, number, pos)
     /// @param {ArrayList} source       ArrayList to be copied from
     /// @param {real} source_pos        Position within the ArrayList to start copying from
     /// @param {real} number            Number of values to copy
     /// @param {real} pos               Position within the ArrayList to copy to
-    /// @description                    Copies (shallow) the part of one ArrayList into another (without clearing)
-    static copy_part = function(source, source_pos, number, pos) {        
+    /// @description                    Copies (shallow) the range of one ArrayList into another (without clearing)
+    static copy_range = function(source, source_pos, number, pos) {        
         array_copy(array, pos, source.array, source_pos, number);
     }
     
-    /// @function                       copy_array(source)
+    /// @function                       copy_array(source_array)
     /// @param {*[]} source             Array to be copied from
     /// @description                    Copies (shallow) the content of array into ArrayList (clears the destination ArrayList)
     static copy_array = function(source) {
@@ -287,13 +480,13 @@ function ArrayList() constructor {
         array_copy(array, 0, source, 0, length);
     }
     
-    /// @function                       copy_array_part(source, source_pos, number, pos)
+    /// @function                       copy_array_range(source_array, source_pos, number, pos)
     /// @param {ArrayList} source       Array to be copied from
     /// @param {real} source_pos        Position within the array to start copying from
     /// @param {real} number            Number of values to copy
     /// @param {real} pos               Position within the ArrayList to copy to
-    /// @description                    Copies (shallow) the part of array into ArrayList (without clearing)
-    static copy_array_part = function(source, source_pos, number, pos) {        
+    /// @description                    Copies (shallow) the range of array into ArrayList (without clearing)
+    static copy_array_range = function(source, source_pos, number, pos) {        
         array_copy(array, pos, source, source_pos, number);
     }
     
@@ -309,12 +502,12 @@ function ArrayList() constructor {
         return list_clone;
     }
     
-    /// @function                       clone_part(pos, number)
+    /// @function                       clone_range(pos, number)
     /// @param {real} pos               Position of value(s) to clone
     /// @param {real} number            Number of value(s) to clone
     /// @return {ArrayList}
-    /// @description                    Returns a partial shallow copy of this ArrayList
-    static clone_part = function(pos, number) {
+    /// @description                    Returns a rangeial shallow copy of this ArrayList
+    static clone_range = function(pos, number) {
         var list_clone = new ArrayList();
         
         array_copy(list_clone.array, 0, array, pos, number);
@@ -334,12 +527,12 @@ function ArrayList() constructor {
         return array_clone;
     }
     
-    /// @function                       to_array_part(pos, number)
+    /// @function                       to_array_range(pos, number)
     /// @param {real} pos               Position of value(s) to copy
     /// @param {real} number            Number of value(s) to copy
     /// @return {*[]}
     /// @description                    Creates a new array containing some values from ArrayList
-    static to_array_part = function(pos, number) {
+    static to_array_range = function(pos, number) {
         var array_clone = array_create(number);
         
         array_copy(array_clone, 0, array, pos, number);
