@@ -113,9 +113,9 @@ function ArrayList() constructor {
     /// @param {*} value                Value to delete
     /// @description                    Removes all the values found from the ArrayList
     static remove_all = function(value) {
-        var length = array_length(source);
+        var length = array_length(array);
         
-        for (var i = 0; i < length; i++) {
+        for (var i = length - 1; i >= 0; i--) {
             if (array[i] == value) {
                 array_delete(array, i, 1);
             }
@@ -148,8 +148,8 @@ function ArrayList() constructor {
     /// @param {*} ...value             Value(s) to add to the ArrayList
     /// @description                    Adds the given value(s) into the ArrayList at the given position, values after will be shifted
     static insert = function(pos, value) {
-        for (var i = 0; i < argument_count; i++) {
-            array_insert(array, pos, argument[i]);
+        for (var i = 1; i < argument_count; i++) {
+            array_insert(array, pos + i - 1, argument[i]);
         }
         
         return self;                    // For method chaining
@@ -163,7 +163,7 @@ function ArrayList() constructor {
         var length = array_length(source.array);
         
         for (var i = 0; i < length; i++) {
-            array_insert(array, pos, source.array[i]);
+            array_insert(array, pos + i, source.array[i]);
         }
         
         return self;                                // For method chaining
@@ -177,7 +177,7 @@ function ArrayList() constructor {
     /// @description                                Adds the range of another ArrayList at the given position, values after will be shifted
     static insert_from_range = function(source, source_pos, number, pos) {        
         for (var i = source_pos; i < source_pos + number; i++) {
-            array_insert(array, pos, source.array[i]);
+            array_insert(array, pos + i - source_pos, source.array[i]);
         }
         
         return self;                                // For method chaining
@@ -191,7 +191,7 @@ function ArrayList() constructor {
         var length = array_length(source);
         
         for (var i = 0; i < length; i++) {
-            array_insert(array, pos, source[i]);
+            array_insert(array, pos + i, source[i]);
         }
         
         return self;                        // For method chaining
@@ -205,7 +205,7 @@ function ArrayList() constructor {
     /// @description                        Adds the range of array into the ArrayList at the given position, values after will be shifted
     static insert_array_range = function(source, source_pos, number, pos) {     
         for (var i = source_pos; i < source_pos + number; i++) {
-            array_insert(array, pos, source[i]);
+            array_insert(array, pos + i - source_pos, source[i]);
         }
         
         return self;                        // For method chaining
@@ -267,16 +267,17 @@ function ArrayList() constructor {
         var length = array_length(array);
         var source_array = source.array;
         var source_length = array_length(source_array);
+        var result = 0;
         
         for (var i = 0; i < length; i++) {
             for (var j = 0; j < source_length; j++) {
-                if (array[i] != source_array[j]) {
-                    return false;
+                if (array[i] == source_array[j]) {
+                    result++;
                 }
             }
         }
         
-        return true;
+        return result == source_length;
     }
     
     /// @function                                   contains_from_range(source_arraylist, source_pos, number)
@@ -288,16 +289,17 @@ function ArrayList() constructor {
     static contains_from_range = function(source, source_pos, number) {
         var length = array_length(array);
         var source_array = source.array;
+        var result = 0;
         
         for (var i = 0; i < length; i++) {
             for (var j = source_pos; j < source_pos + number; j++) {
-                if (array[i] != source_array[j]) {
-                    return false;
+                if (array[i] == source_array[j]) {
+                    result++;
                 }
             }
         }
         
-        return true;
+        return result == number;
     }
     
     /// @function                           contains_array(source_array)
@@ -307,16 +309,17 @@ function ArrayList() constructor {
     static contains_array = function(source) {
         var length = array_length(array);
         var source_length = array_length(source);
+        var result = 0;
         
         for (var i = 0; i < length; i++) {
             for (var j = 0; j < source_length; j++) {
-                if (array[i] != source_array[j]) {
-                    return false;
+                if (array[i] == source[j]) {
+                    result++;
                 }
             }
         }
         
-        return true;
+        return result == source_length;
     }
     
     /// @function                           contains_array_range(source_array, source_pos, number)
@@ -327,16 +330,17 @@ function ArrayList() constructor {
     /// @description                        Returns true if the ArrayList contains the range of the specified array
     static contains_array_range = function(source, source_pos, number) {
         var length = array_length(array);
+        var result = 0;
         
         for (var i = 0; i < length; i++) {
             for (var j = source_pos; j < source_pos + number; j++) {
-                if (array[i] != source[j]) {
-                    return false;
+                if (array[i] == source[j]) {
+                    result++;
                 }
             }
         }
         
-        return true;
+        return result == number;
     }
     
     /// @function                           find(predicate)
@@ -472,7 +476,7 @@ function ArrayList() constructor {
     static remove_where_all = function(predicate) {
         var length = array_length(array);
         
-        for (var i = 0; i < length; i++) {
+        for (var i = length - 1; i >= 0; i--) {
             var value = array[i];
             
             if (predicate(value)) {
