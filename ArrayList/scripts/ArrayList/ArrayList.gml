@@ -2,7 +2,6 @@
 /// @param {*[]} [array]            Array to make the ArrayList from
 /// @description                    List struct build on top of an array
 function ArrayList() constructor {
-    /// @hint :array
     /// @member {*[]} array             Can be used with an accessor or as a reference, points to the same array for full lifecycle
     if (argument_count == 1) {
         array = argument[0];
@@ -90,6 +89,39 @@ function ArrayList() constructor {
         }
         
         return self;                            // For method chaining
+    }
+    
+    /// @function                       remove(value)
+    /// @param {*} value                Value to delete
+    /// @description                    Removes the first found value from the ArrayList
+    static remove = function(value) {
+        array_delete(array, index_of(value), 1);
+        
+        return self;                    // For method chaining
+    }
+    
+    /// @function                       remove_last(value)
+    /// @param {*} value                Value to delete
+    /// @description                    Removes the last found value from the ArrayList
+    static remove_last = function(value) {
+        array_delete(array, last_index_of(value), 1);
+        
+        return self;                    // For method chaining
+    }
+    
+    /// @function                       remove_all(value)
+    /// @param {*} value                Value to delete
+    /// @description                    Removes all the values found from the ArrayList
+    static remove_all = function(value) {
+        var length = array_length(source);
+        
+        for (var i = 0; i < length; i++) {
+            if (array[i] == value) {
+                array_delete(array, i, 1);
+            }
+        }
+        
+        return self;                    // For method chaining
     }
     
     /// @function                       remove_at(pos)
@@ -309,7 +341,7 @@ function ArrayList() constructor {
     
     /// @function                           find(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {*}                         First occurrence within the ArrayList
+    /// @return {*}                         First occurrence within the ArrayList (or undefined if not found)
     /// @description                        Searches for the first element that matches the conditions defined by the specified predicate function
     static find = function(predicate) {
         var length = array_length(array);
@@ -321,11 +353,13 @@ function ArrayList() constructor {
                 return value;
             }
         }
+        
+        return undefined;
     }
     
     /// @function                           find_last(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {*}                         Last occurrence within the ArrayList
+    /// @return {*}                         Last occurrence within the ArrayList (or undefined if not found)
     /// @description                        Searches for the last element that matches the conditions defined by the specified predicate function
     static find_last = function(predicate) {
         var length = array_length(array);
@@ -337,11 +371,13 @@ function ArrayList() constructor {
                 return value;
             }
         }
+        
+        return undefined;
     }
     
     /// @function                           find_all(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {ArrayList}                 New ArrayList with all elements that match the conditions
+    /// @return {ArrayList}                 New ArrayList with all elements that match the conditions (blank ArrayList if not found any)
     /// @description                        Searches for all elements that match the conditions defined by the specified predicate function
     static find_all  = function(predicate) {
         var result = new ArrayList();
@@ -360,7 +396,7 @@ function ArrayList() constructor {
     
     /// @function                           find_index(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {*}                         Indef of the first occurrence within the ArrayList
+    /// @return {real}                      Index of the first occurrence within the ArrayList (or -1 if not found)
     /// @description                        Searches for the first element that matches the conditions defined by the specified predicate function
     static find_index  = function(predicate) {
         var length = array_length(array);
@@ -372,11 +408,13 @@ function ArrayList() constructor {
                 return i;
             }
         }
+        
+        return -1;
     }
     
     /// @function                           find_last_index(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {*}                         Index of the last occurrence within the ArrayList
+    /// @return {real}                      Index of the last occurrence within the ArrayList (or -1 if not found)
     /// @description                        Searches for the last element that matches the conditions defined by the specified predicate function
     static find_last_index = function(predicate) {
         var length = array_length(array);
@@ -388,12 +426,14 @@ function ArrayList() constructor {
                 return i;
             }
         }
+        
+        return -1;
     }
     
-    /// @function                           remove(predicate)
+    /// @function                           remove_where(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
     /// @description                        Removes the first occurrence of the element that matches the conditions defined by the specified predicate function
-    static remove = function(predicate) {
+    static remove_where = function(predicate) {
         var length = array_length(array);
         
         for (var i = 0; i < length; i++) {
@@ -401,17 +441,17 @@ function ArrayList() constructor {
             
             if (predicate(value)) {
                 array_delete(array, i, 1);
-                exit;
+                return self;                // For method chaining
             }
         }
         
         return self;                        // For method chaining
     }
     
-    /// @function                           remove_last(predicate)
+    /// @function                           remove_where_last(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
     /// @description                        Removes the last occurrence of the element that matches the conditions defined by the specified predicate function
-    static remove_last = function(predicate) {
+    static remove_where_last = function(predicate) {
         var length = array_length(array);
         
         for (var i = length - 1; i >= 0; i--) {
@@ -419,17 +459,17 @@ function ArrayList() constructor {
             
             if (predicate(value)) {
                 array_delete(array, i, 1);
-                exit;
+                return self;                // For method chaining
             }
         }
         
         return self;                        // For method chaining
     }
     
-    /// @function                           remove_all(predicate)
+    /// @function                           remove_where_all(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
     /// @description                        Removes all elements that match the conditions defined by the specified predicate function
-    static remove_all = function(predicate) {
+    static remove_where_all = function(predicate) {
         var length = array_length(array);
         
         for (var i = 0; i < length; i++) {
@@ -450,7 +490,7 @@ function ArrayList() constructor {
         var length = array_length(array);
         
         for (var i = 0; i < length; i++) {
-            func(array);
+            func(array[i]);
         }
         
         return self;                    // For method chaining
@@ -589,6 +629,37 @@ function ArrayList() constructor {
         return self;                        // For method chaining
     }
     
+        
+    /// @function                               copy_ds_list(source_ds_list)
+    /// @param {ds_list} source_ds_list         Array to be copied from
+    /// @description                            Copies (shallow) the content of ds_list into the ArrayList (clears the destination ArrayList)
+    static copy_ds_list = function(source) {
+        var length = array_length(source);
+        
+        clear();
+        for (var i = 0; i < length; i++) {
+            array[i] = source[| i];
+        }
+        
+        return self;                            // For method chaining
+    }
+    
+    /// @function                               copy_ds_list_range(source_ds_list, source_pos, number, pos)
+    /// @param {ds_list} source_ds_list         Array to be copied from
+    /// @param {real} source_pos                Position within the array to start copying from
+    /// @param {real} number                    Number of values to copy
+    /// @param {real} pos                       Position within the ArrayList to copy to
+    /// @description                            Copies (shallow) the range of array into the ArrayList (without clearing)
+    static copy_ds_list_range = function(source, source_pos, number, pos) {        
+        for (var i = pos; i < pos + number; i++) {
+            for (var j = source_pos; j < source_pos + number; j++) {
+                array[i] = source[| j];
+            }
+        }
+        
+        return self;                            // For method chaining
+    }
+    
     /// @function                       clone()
     /// @return {ArrayList}
     /// @description                    Returns a shallow copy of the ArrayList
@@ -641,7 +712,7 @@ function ArrayList() constructor {
     /// @function                       to_ds_list()
     /// @return {ds_list}
     /// @description                    Creates a new ds_list containing all values from the ArrayList
-    static to_array = function() {
+    static to_ds_list = function() {
         var length = array_length(array);
         var list_clone = ds_list_create();
         
@@ -679,3 +750,64 @@ function ArrayList() constructor {
         return "ArrayList: " + string(array);
     }
 }
+
+#region GMEdit Hints
+
+/// @hint new ArrayList([array)
+/// @hint ArrayList:array
+/// @hint ArrayList:get(pos)->any
+/// @hint ArrayList:set(pos, value)
+/// @hint ArrayList:add(...value)
+/// @hint ArrayList:add_from(source_arraylist)
+/// @hint ArrayList:add_from_range(source_arraylist, source_pos, number)
+/// @hint ArrayList:add_array(source_array)
+/// @hint ArrayList:add_array_range(source_array, source_pos, number)
+/// @hint ArrayList:remove(value)
+/// @hint ArrayList:remove_last(value)
+/// @hint ArrayList:remove_all(value)
+/// @hint ArrayList:remove_at(pos)
+/// @hint ArrayList:remove_range(pos, number)
+/// @hint ArrayList:insert(pos, ...value)
+/// @hint ArrayList:insert_from(source_arraylist, pos)
+/// @hint ArrayList:insert_from_range(source_arraylist, source_pos, number, pos)
+/// @hint ArrayList:insert_array(source_array, pos)
+/// @hint ArrayList:insert_array_range(source_array, source_pos, number, pos)
+/// @hint ArrayList:index_of(value)->real
+/// @hint ArrayList:last_index_of(value)->real
+/// @hint ArrayList:contains(value)->bool
+/// @hint ArrayList:contains_from(source_arraylist)->bool
+/// @hint ArrayList:contains_from_range(source_arraylist, source_pos, number)->bool
+/// @hint ArrayList:contains_array(source_array)->bool
+/// @hint ArrayList:contains_array_range(source_array, source_pos, number)->bool
+/// @hint ArrayList:find(predicate)->?any
+/// @hint ArrayList:find_last(predicate)->?any
+/// @hint ArrayList:find_all(predicate)->ArrayList
+/// @hint ArrayList:find_index(predicate)->real
+/// @hint ArrayList:find_last_index(predicate)->real
+/// @hint ArrayList:remove_where(predicate)
+/// @hint ArrayList:remove_where_last(predicate)
+/// @hint ArrayList:remove_where_all(predicate)
+/// @hint ArrayList:foreach(func)
+/// @hint ArrayList:iterator()->Iterator
+/// @hint ArrayList:size()->real
+/// @hint ArrayList:clear()
+/// @hint ArrayList:is_empty()->bool
+/// @hint ArrayList:sort(ascending_or_comparator)
+/// @hint ArrayList:swap(pos1, pos2)
+/// @hint ArrayList:shuffle()
+/// @hint ArrayList:reverse()
+/// @hint ArrayList:copy(source_arraylist)
+/// @hint ArrayList:copy_range(source_arraylist, source_pos, number, pos)
+/// @hint ArrayList:copy_array(source_array)
+/// @hint ArrayList:copy_array_range(source_array, source_pos, number, pos)
+/// @hint ArrayList:copy_ds_list(source_ds_list)
+/// @hint ArrayList:copy_ds_list_range(source_ds_list, source_pos, number, pos)
+/// @hint ArrayList:clone()->ArrayList
+/// @hint ArrayList:clone_range(pos, number)->ArrayList
+/// @hint ArrayList:to_array()->any[]
+/// @hint ArrayList:to_array_range(pos, number)->any[]
+/// @hint ArrayList:to_ds_list()->ds_list
+/// @hint ArrayList:to_ds_list_range(pos, number)->ds_list
+/// @hint ArrayList:equals(array_list)->bool
+
+#endregion
