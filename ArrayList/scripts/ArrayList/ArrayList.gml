@@ -11,7 +11,7 @@ function ArrayList() constructor {
     
     /// @function                       get(pos)
     /// @param {real} pos               Position to look at from 0 to size-1
-    /// @return {*}                     Value found on position
+    /// @returns {*}                    Value found on position
     /// @description                    Returns the value at the specified position in the ArrayList
     static get = function(pos) {
         return array[pos];
@@ -213,7 +213,7 @@ function ArrayList() constructor {
     
     /// @function                       index_of(value)
     /// @param {*} value                Value to find
-    /// @return {real}                  Index of the first value found in the ArrayList, -1 if value doesn't exist
+    /// @returns {real}                 Index of the first value found in the ArrayList, -1 if value doesn't exist
     /// @description                    Checks the ArrayList for the first occurrence of the value
     static index_of = function(value) {
         var length = array_length(array);
@@ -229,7 +229,7 @@ function ArrayList() constructor {
     
     /// @function                       last_index_of(value)
     /// @param {*} value                Value to find
-    /// @return {real}                  Index of the last value found in the ArrayList, -1 if value doesn't exist
+    /// @returns {real}                 Index of the last value found in the ArrayList, -1 if value doesn't exist
     /// @description                    Checks the ArrayList for the last occurrence of the value
     static last_index_of = function(value) {
         var length = array_length(array);
@@ -245,7 +245,7 @@ function ArrayList() constructor {
     
     /// @function                       contains(value)
     /// @param {*} value                Value to check
-    /// @return {bool}
+    /// @returns {bool}
     /// @description                    Returns true if the ArrayList contains the specified element
     static contains = function(value) {
         var length = array_length(array);
@@ -261,7 +261,7 @@ function ArrayList() constructor {
     
     /// @function                                   contains_from(source_arraylist)
     /// @param {ArrayList} source_arraylist         ArrayList to check values from
-    /// @return {bool}
+    /// @returns {bool}
     /// @description                                Returns true if the ArrayList contains all of the elements of other ArrayList
     static contains_from = function(source) {
         var length = array_length(array);
@@ -284,7 +284,7 @@ function ArrayList() constructor {
     /// @param {ArrayList} source_arraylist         ArrayList to check values from
     /// @param {real} source_pos                    Position within the ArrayList to start checking from
     /// @param {real} number                        Number of values to check
-    /// @return {bool}
+    /// @returns {bool}
     /// @description                                Returns true if the ArrayList contains the range of other ArrayList
     static contains_from_range = function(source, source_pos, number) {
         var length = array_length(array);
@@ -304,7 +304,7 @@ function ArrayList() constructor {
     
     /// @function                           contains_array(source_array)
     /// @param {*[]} source_array           Array to check values from
-    /// @return {bool}
+    /// @returns {bool}
     /// @description                        Returns true if the ArrayList contains all of the elements of the specified array
     static contains_array = function(source) {
         var length = array_length(array);
@@ -326,7 +326,7 @@ function ArrayList() constructor {
     /// @param {*[]} source_array           Array to check values from
     /// @param {real} source_pos            Position within the array to start checking from
     /// @param {real} number                Number of values to check
-    /// @return {bool}
+    /// @returns {bool}
     /// @description                        Returns true if the ArrayList contains the range of the specified array
     static contains_array_range = function(source, source_pos, number) {
         var length = array_length(array);
@@ -345,7 +345,7 @@ function ArrayList() constructor {
     
     /// @function                           find(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {*}                         First occurrence within the ArrayList (or undefined if not found)
+    /// @returns {*}                        First occurrence within the ArrayList (or undefined if not found)
     /// @description                        Searches for the first element that matches the conditions defined by the specified predicate function
     static find = function(predicate) {
         var length = array_length(array);
@@ -363,7 +363,7 @@ function ArrayList() constructor {
     
     /// @function                           find_last(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {*}                         Last occurrence within the ArrayList (or undefined if not found)
+    /// @returns {*}                        Last occurrence within the ArrayList (or undefined if not found)
     /// @description                        Searches for the last element that matches the conditions defined by the specified predicate function
     static find_last = function(predicate) {
         var length = array_length(array);
@@ -381,7 +381,7 @@ function ArrayList() constructor {
     
     /// @function                           find_all(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {ArrayList}                 New ArrayList with all elements that match the conditions (blank ArrayList if not found any)
+    /// @returns {ArrayList}                New ArrayList with all elements that match the conditions (blank ArrayList if not found any)
     /// @description                        Searches for all elements that match the conditions defined by the specified predicate function
     static find_all  = function(predicate) {
         var result = new ArrayList();
@@ -400,7 +400,7 @@ function ArrayList() constructor {
     
     /// @function                           find_index(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {real}                      Index of the first occurrence within the ArrayList (or -1 if not found)
+    /// @returns {real}                     Index of the first occurrence within the ArrayList (or -1 if not found)
     /// @description                        Searches for the first element that matches the conditions defined by the specified predicate function
     static find_index  = function(predicate) {
         var length = array_length(array);
@@ -418,7 +418,7 @@ function ArrayList() constructor {
     
     /// @function                           find_last_index(predicate)
     /// @param {function} predicate         One-argument function that should return true if the argument value meets some conditions
-    /// @return {real}                      Index of the last occurrence within the ArrayList (or -1 if not found)
+    /// @returns {real}                     Index of the last occurrence within the ArrayList (or -1 if not found)
     /// @description                        Searches for the last element that matches the conditions defined by the specified predicate function
     static find_last_index = function(predicate) {
         var length = array_length(array);
@@ -501,14 +501,14 @@ function ArrayList() constructor {
     }
     
     /// @function                       iterator()
-    /// @return {Iterator}              See {@link https://github.com/KeeVeeGames/Iterator.gml}
+    /// @returns {Iterator}             See {@link https://github.com/KeeVeeGames/Iterator.gml}
     /// @description                    Returns an iterator over the elements in the ArrayList
     static iterator = function() {
         return new Iterator(array);
     }
     
     /// @function                       size()
-    /// @return {real}
+    /// @returns {real}
     /// @description                    Returns the number of items in the ArrayList
     static size = function() {
         return array_length(array);
@@ -532,7 +532,7 @@ function ArrayList() constructor {
     }
     
     /// @function                       is_empty()
-    /// @return {bool}
+    /// @returns {bool}
     /// @description                    Checks the ArrayList to see if it is empty
     static is_empty = function() {
         return (array_length(array) == 0);
@@ -585,14 +585,14 @@ function ArrayList() constructor {
         return self;                    // For method chaining
     }
     
-    /// @function                                   copy(source_arraylist)
+    /// @function                                   copy(source_arraylist, pos)
     /// @param {ArrayList} source_arraylist         ArrayList to be copied from
-    /// @description                                Copies (shallow) the content of one ArrayList into another (clears the destination ArrayList)
-    static copy = function(source) {
+    /// @param {real} pos                           Position within the ArrayList to copy to
+    /// @description                                Copies (shallow) the content of one ArrayList into another at the given position (overwrites intersect values)
+    static copy = function(source, pos) {
         var length = array_length(source.array);
         
-        clear();
-        array_copy(array, 0, source.array, 0, length);
+        array_copy(array, pos, source.array, 0, length);
         
         return self;                                // For method chaining
     }
@@ -602,21 +602,21 @@ function ArrayList() constructor {
     /// @param {real} source_pos                    Position within the ArrayList to start copying from
     /// @param {real} number                        Number of values to copy
     /// @param {real} pos                           Position within the ArrayList to copy to
-    /// @description                                Copies (shallow) the range of one ArrayList into another (without clearing)
+    /// @description                                Copies (shallow) the range of one ArrayList into another at the given position (overwrites intersect values)
     static copy_range = function(source, source_pos, number, pos) {        
         array_copy(array, pos, source.array, source_pos, number);
         
         return self;                                // For method chaining
     }
     
-    /// @function                           copy_array(source_array)
+    /// @function                           copy_array(source_array, pos)
     /// @param {*[]} source_array           Array to be copied from
-    /// @description                        Copies (shallow) the content of array into the ArrayList (clears the destination ArrayList)
-    static copy_array = function(source) {
+    /// @param {real} pos                   Position within the ArrayList to copy to
+    /// @description                        Copies (shallow) the content of array into the ArrayList at the given position (overwrites intersect values)
+    static copy_array = function(source, pos) {
         var length = array_length(source);
         
-        clear();
-        array_copy(array, 0, source, 0, length);
+        array_copy(array, pos, source, 0, length);
         
         return self;                        // For method chaining
     }
@@ -626,7 +626,7 @@ function ArrayList() constructor {
     /// @param {real} source_pos            Position within the array to start copying from
     /// @param {real} number                Number of values to copy
     /// @param {real} pos                   Position within the ArrayList to copy to
-    /// @description                        Copies (shallow) the range of array into the ArrayList (without clearing)
+    /// @description                        Copies (shallow) the range of array into the ArrayList at the given position (overwrites intersect values)
     static copy_array_range = function(source, source_pos, number, pos) {        
         array_copy(array, pos, source, source_pos, number);
         
@@ -634,15 +634,15 @@ function ArrayList() constructor {
     }
     
         
-    /// @function                               copy_ds_list(source_ds_list)
+    /// @function                               copy_ds_list(source_ds_list, pos)
     /// @param {ds_list} source_ds_list         Array to be copied from
-    /// @description                            Copies (shallow) the content of ds_list into the ArrayList (clears the destination ArrayList)
-    static copy_ds_list = function(source) {
-        var length = array_length(source);
+    /// @param {real} pos                       Position within the ArrayList to copy to
+    /// @description                            Copies (shallow) the content of ds_list into the ArrayList at the given position (overwrites intersect values)
+    static copy_ds_list = function(source, pos) {
+        var length = ds_list_size(source);
         
-        clear();
         for (var i = 0; i < length; i++) {
-            array[i] = source[| i];
+            array[pos + i] = source[| i];
         }
         
         return self;                            // For method chaining
@@ -653,19 +653,17 @@ function ArrayList() constructor {
     /// @param {real} source_pos                Position within the array to start copying from
     /// @param {real} number                    Number of values to copy
     /// @param {real} pos                       Position within the ArrayList to copy to
-    /// @description                            Copies (shallow) the range of array into the ArrayList (without clearing)
+    /// @description                            Copies (shallow) the range of array into the ArrayList at the given position (overwrites intersect values)
     static copy_ds_list_range = function(source, source_pos, number, pos) {        
-        for (var i = pos; i < pos + number; i++) {
-            for (var j = source_pos; j < source_pos + number; j++) {
-                array[i] = source[| j];
-            }
+        for (var i = 0; i < number; i++) {
+            array[pos + i] = source[| source_pos + i];
         }
         
         return self;                            // For method chaining
     }
     
     /// @function                       clone()
-    /// @return {ArrayList}
+    /// @returns {ArrayList}
     /// @description                    Returns a shallow copy of the ArrayList
     static clone = function() {
         var length = array_length(array);
@@ -679,7 +677,7 @@ function ArrayList() constructor {
     /// @function                       clone_range(pos, number)
     /// @param {real} pos               Position of value(s) to clone
     /// @param {real} number            Number of value(s) to clone
-    /// @return {ArrayList}
+    /// @returns {ArrayList}
     /// @description                    Returns a rangeial shallow copy of the ArrayList
     static clone_range = function(pos, number) {
         var list_clone = new ArrayList();
@@ -689,8 +687,18 @@ function ArrayList() constructor {
         return list_clone;
     }
     
+    static copy_deep = function(source, pos) {
+        var deep = deep_copy(source.array);
+        var length = array_length(deep);
+        show_debug_message("LENGTH: " + string(length));
+        
+        array_copy(array, pos, deep, 0, length);
+        
+        return self;                                // For method chaining
+    }
+    
     /// @function                       to_array()
-    /// @return {*[]}
+    /// @returns {*[]}
     /// @description                    Creates a new array containing all values from the ArrayList
     static to_array = function() {
         var length = array_length(array);
@@ -704,7 +712,7 @@ function ArrayList() constructor {
     /// @function                       to_array_range(pos, number)
     /// @param {real} pos               Position of value(s) to copy
     /// @param {real} number            Number of value(s) to copy
-    /// @return {*[]}
+    /// @returns {*[]}
     /// @description                    Creates a new array containing some values from the ArrayList
     static to_array_range = function(pos, number) {
         var array_clone = array_create(number);
@@ -714,7 +722,7 @@ function ArrayList() constructor {
         return array_clone;
     }    
     /// @function                       to_ds_list()
-    /// @return {ds_list}
+    /// @returns {ds_list}
     /// @description                    Creates a new ds_list containing all values from the ArrayList
     static to_ds_list = function() {
         var length = array_length(array);
@@ -730,7 +738,7 @@ function ArrayList() constructor {
     /// @function                       to_ds_list_range(pos, number)
     /// @param {real} pos               Position of value(s) to copy
     /// @param {real} number            Number of value(s) to copy
-    /// @return {*[]}
+    /// @returns {*[]}
     /// @description                    Creates a new ds_list containing some values from the ArrayList
     static to_ds_list_range = function(pos, number) {
         var list_clone = ds_list_create();
@@ -744,7 +752,7 @@ function ArrayList() constructor {
     
     /// @function                           equals(array_list)
     /// @param {ArrayList} array_list       ArrayList to check with
-    /// @return {bool}
+    /// @returns {bool}
     /// @description                        Checks if two ArrayLists are equal (has the same values)
     static equals = function(array_list) {
         return array_equals(array, array_list.array);
@@ -760,8 +768,8 @@ function ArrayList() constructor {
 /// @hint new ArrayList([array)
 /// @hint ArrayList:array
 /// @hint ArrayList:get(pos)->any
-/// @hint ArrayList:set(pos, value)
-/// @hint ArrayList:add(...value)
+/// @hint ArrayList:set(pos:real, value:any)
+/// @hint ArrayList:add(...value:any)
 /// @hint ArrayList:add_from(source_arraylist)
 /// @hint ArrayList:add_from_range(source_arraylist, source_pos, number)
 /// @hint ArrayList:add_array(source_array)
@@ -800,14 +808,18 @@ function ArrayList() constructor {
 /// @hint ArrayList:swap(pos1, pos2)
 /// @hint ArrayList:shuffle()
 /// @hint ArrayList:reverse()
-/// @hint ArrayList:copy(source_arraylist)
+/// @hint ArrayList:copy(source_arraylist, pos)
 /// @hint ArrayList:copy_range(source_arraylist, source_pos, number, pos)
-/// @hint ArrayList:copy_array(source_array)
+/// @hint ArrayList:copy_array(source_array, pos)
 /// @hint ArrayList:copy_array_range(source_array, source_pos, number, pos)
-/// @hint ArrayList:copy_ds_list(source_ds_list)
+/// @hint ArrayList:copy_ds_list(source_ds_list, pos)
 /// @hint ArrayList:copy_ds_list_range(source_ds_list, source_pos, number, pos)
 /// @hint ArrayList:clone()->ArrayList
 /// @hint ArrayList:clone_range(pos, number)->ArrayList
+/// @hint ArrayList:copy_deep(source_arraylist, pos)
+/// @hint ArrayList:copy_deep_range(source_arraylist, source_pos, number, pos)
+/// @hint ArrayList:clone_deep()->ArrayList
+/// @hint ArrayList:clone_deep_range(pos, number)->ArrayList
 /// @hint ArrayList:to_array()->any[]
 /// @hint ArrayList:to_array_range(pos, number)->any[]
 /// @hint ArrayList:to_ds_list()->ds_list

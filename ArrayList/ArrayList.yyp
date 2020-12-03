@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"ArrayList","path":"scripts/ArrayList/ArrayList.yy",},"order":1,},
+    {"id":{"name":"deep_copy","path":"scripts/deep_copy/deep_copy.yy",},"order":2,},
     {"id":{"name":"obj_arraylist_test","path":"objects/obj_arraylist_test/obj_arraylist_test.yy",},"order":0,},
     {"id":{"name":"rm_arraylist_test","path":"rooms/rm_arraylist_test/rm_arraylist_test.yy",},"order":0,},
   ],

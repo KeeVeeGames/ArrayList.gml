@@ -270,60 +270,101 @@ with (tests) {
         assert_array(list.array, [10, 50], "remove_where_all");
     }
     
-    foreach_test = function() {
-        
-    }
-    
     size_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
         
+        assert(list.size(), 5, "size");
     }
     
     clear_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        list.clear();
         
+        assert(array_length(list.array), 0, "clear");
     }
     
     is_empty_test = function() {
+        var list1/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list2/*:ArrayList*/ = new ArrayList();
         
+        assert(list1.is_empty(), false, "is_empty false");
+        assert(list2.is_empty(), true, "is_empty true");
     }
     
     sort_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([30, 50, 40, 10, 20]);
+        list.sort(true);
         
+        assert_array(list.array, [10, 20, 30, 40, 50], "sort");
     }
     
     swap_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        list.swap(1, 3);
         
+        assert_array(list.array, [10, 40, 30, 20, 50], "swap");
     }
     
     shuffle_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        list.shuffle();
         
+        assert_func(list, new ArrayList([10, 20, 30, 40, 50]), function(a, b) { return a.contains_from(b) && !a.equals(b); }, "shuffle");
     }
     
     reverse_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        list.reverse();
         
+        assert_array(list.array, [50, 40, 30, 20, 10], "reverse");
     }
     
     copy_test = function() {
+        var list1/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list2/*:ArrayList*/ = new ArrayList(["twenty", "thirty", "forty"]);
+        list1.copy(list2, 1);
         
+        assert_array(list1.array, [10, "twenty", "thirty", "forty", 50], "copy");
     }
     
     copy_range_test = function() {
+        var list1/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list2/*:ArrayList*/ = new ArrayList(["twenty", "thirty", "forty"]);
+        list1.copy_range(list2, 1, 2, 2);
         
+        assert_array(list1.array, [10, 20, "thirty", "forty", 50], "copy_range");
     }
     
     copy_array_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var array = ["twenty", "thirty", "forty"];
+        list.copy_array(array, 1);
         
+        assert_array(list.array, [10, "twenty", "thirty", "forty", 50], "copy_array");
     }
     
     copy_array_range_test = function() {
+        var list/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var array = ["twenty", "thirty", "forty"];
+        list.copy_array_range(array, 1, 2, 2);
         
+        assert_array(list.array, [10, 20, "thirty", "forty", 50], "copy_array_range");
     }
     
     copy_ds_list_test = function() {
+        var list1/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list2 = ds_list_create(); ds_list_add(list2, "twenty", "thirty", "forty");
+        list1.copy_ds_list(list2, 1);
         
+        assert_array(list1.array, [10, "twenty", "thirty", "forty", 50], "copy_ds_list");
     }
     
     copy_ds_list_range_test = function() {
+        var list1/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list2 = ds_list_create(); ds_list_add(list2, "twenty", "thirty", "forty");
+        list1.copy_ds_list_range(list2, 1, 2, 2);
         
+        assert_array(list1.array, [10, 20, "thirty", "forty", 50], "copy_ds_list_range");
     }
     
     clone_test = function() {
@@ -332,6 +373,14 @@ with (tests) {
     
     clone_range_test = function() {
         
+    }
+    
+    copy_deep_test = function() {
+        var list1/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list2/*:ArrayList*/ = new ArrayList([{ twenty : 20 } , { thirty : 30 }, { forty : 40 }]);
+        list1.copy_deep(list2, 1);
+        
+        assert_func(list1.array, [10, { twenty : 20 } , { thirty : 30 }, { forty : 40 }, 50], function(a, b) { return string(a) == string(b) && !array_equals(a, b); }, "copy_deep");
     }
     
     to_array_test = function() {
@@ -351,7 +400,12 @@ with (tests) {
     }
     
     equals_test = function() {
+        var list1/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list2/*:ArrayList*/ = new ArrayList([10, 20, 30, 40, 50]);
+        var list3/*:ArrayList*/ = new ArrayList([10, 30, 50]);
         
+        assert(list1.equals(list2), true, "equals true");
+        assert(list1.equals(list3), false, "equals false");
     }
 }
 
