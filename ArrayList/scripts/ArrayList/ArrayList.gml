@@ -678,7 +678,7 @@ function ArrayList() constructor {
     /// @param {real} pos               Position of value(s) to clone
     /// @param {real} number            Number of value(s) to clone
     /// @returns {ArrayList}
-    /// @description                    Returns a rangeial shallow copy of the ArrayList
+    /// @description                    Returns a shallow copy of the ArrayList range
     static clone_range = function(pos, number) {
         var list_clone = new ArrayList();
         
@@ -687,14 +687,56 @@ function ArrayList() constructor {
         return list_clone;
     }
     
+    /// @function                                   copy_deep(source_arraylist, pos)
+    /// @param {ArrayList} source_arraylist         ArrayList to be copied from
+    /// @param {real} pos                           Position within the ArrayList to copy to
+    /// @description                                Copies (deep) the content of one ArrayList into another at the given position (overwrites intersect values)
+    /// @see                                        {@link https://github.com/KeeVeeGames/DeepCopy.gml}
     static copy_deep = function(source, pos) {
         var deep = deep_copy(source.array);
         var length = array_length(deep);
-        show_debug_message("LENGTH: " + string(length));
         
         array_copy(array, pos, deep, 0, length);
         
         return self;                                // For method chaining
+    }
+    
+    /// @function                                   copy_deep_range(source_arraylist, source_pos, number, pos)
+    /// @param {ArrayList} source_arraylist         ArrayList to be copied from
+    /// @param {real} source_pos                    Position within the ArrayList to start copying from
+    /// @param {real} number                        Number of values to copy
+    /// @param {real} pos                           Position within the ArrayList to copy to
+    /// @description                                Copies (deep) the range of one ArrayList into another at the given position (overwrites intersect values)
+    /// @see                                        {@link https://github.com/KeeVeeGames/DeepCopy.gml}
+    static copy_deep_range = function(source, source_pos, number, pos) {    
+        var deep = deep_copy(source.array);
+        
+        array_copy(array, pos, deep, source_pos, number);
+        
+        return self;                                // For method chaining
+    }
+    
+    /// @function                       clone_deep()
+    /// @returns {ArrayList}
+    /// @description                    Returns a deep copy of the ArrayList
+    /// @see                            {@link https://github.com/KeeVeeGames/DeepCopy.gml}
+    static clone_deep = function() {
+        return deep_copy(self);
+    }
+    
+    /// @function                       clone_deep_range(pos, number)
+    /// @param {real} pos               Position of value(s) to clone
+    /// @param {real} number            Number of value(s) to clone
+    /// @returns {ArrayList}
+    /// @description                    Returns a deep copy of the ArrayList range
+    /// @see                            {@link https://github.com/KeeVeeGames/DeepCopy.gml}
+    static clone_deep_range = function(pos, number) {
+        var deep = deep_copy(self.array);
+        var list_clone = new ArrayList();
+        
+        array_copy(list_clone.array, 0, deep, pos, number);
+        
+        return list_clone;
     }
     
     /// @function                       to_array()
@@ -713,7 +755,7 @@ function ArrayList() constructor {
     /// @param {real} pos               Position of value(s) to copy
     /// @param {real} number            Number of value(s) to copy
     /// @returns {*[]}
-    /// @description                    Creates a new array containing some values from the ArrayList
+    /// @description                    Creates a new array containing a range of values from the ArrayList
     static to_array_range = function(pos, number) {
         var array_clone = array_create(number);
         
@@ -739,7 +781,7 @@ function ArrayList() constructor {
     /// @param {real} pos               Position of value(s) to copy
     /// @param {real} number            Number of value(s) to copy
     /// @returns {*[]}
-    /// @description                    Creates a new ds_list containing some values from the ArrayList
+    /// @description                    Creates a new ds_list containing a range of values from the ArrayList
     static to_ds_list_range = function(pos, number) {
         var list_clone = ds_list_create();
         
